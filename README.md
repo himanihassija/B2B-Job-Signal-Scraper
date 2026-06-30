@@ -2,11 +2,11 @@
 
 A Python scraper that finds B2B sales/GTM leads by monitoring job postings. The idea: when a company is hiring for revenue, sales, marketing, or ops leadership roles, that's a strong buying signal for B2B tools and services targeting those functions.
 
-Pulls job listings across the US and UK, enriches them with company name, salary, location, and job description, deduplicates, and writes everything to a CSV — with optional auto-sync to Google Sheets.
+Pulls job listings across the US and UK, enriches them with company name, salary, location, and job description, deduplicates, and writes everything to a CSV, with optional auto-sync to Google Sheets.
 
 ## What it does
 
-- Searches **40+ target job titles** (VP Sales, Head of Growth, RevOps, CRO, Founder, GTM Engineer, HubSpot Admin, etc.) — fully configurable
+- Searches **40+ target job titles** (VP Sales, Head of Growth, RevOps, CRO, Founder, GTM Engineer, HubSpot Admin, etc.), fully configurable
 - Pulls from **Adzuna** (aggregates Indeed, LinkedIn, Glassdoor, and direct company postings) and **LinkedIn Jobs** directly
 - Optional **Reed.co.uk** integration for deeper UK coverage
 - Deduplicates leads across runs (safe to re-run daily/weekly as a cron job)
@@ -15,7 +15,7 @@ Pulls job listings across the US and UK, enriches them with company name, salary
 
 ## Why job postings as a lead signal
 
-A company hiring a VP of Sales is investing in growth. A company hiring a HubSpot Administrator just adopted (or is scaling) a CRM. A company hiring an SDR Manager is building out a sales team. These are timing signals that traditional firmographic lead lists miss — this scraper turns "who's hiring for X" into a structured, searchable lead feed.
+A company hiring a VP of Sales is investing in growth. A company hiring a HubSpot Administrator just adopted (or is scaling) a CRM. A company hiring an SDR Manager is building out a sales team. These are timing signals that traditional firmographic lead lists miss, this scraper turns "who's hiring for X" into a structured, searchable lead feed.
 
 ## Setup
 
