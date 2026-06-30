@@ -100,7 +100,7 @@ To target a different market or different buyer persona, just edit `TARGET_ROLES
 
 CSV columns: `job_title, company, company_domain, location, job_url, posted_date, salary, job_type, description, source_portal, scraped_at`
 
-Re-running the scraper is safe — it deduplicates against existing rows in `leads.csv` (or the Google Sheet) by job URL, so you can schedule it as a daily/weekly cron job without creating duplicate leads.
+Re-running the scraper is safe it deduplicates against existing rows in `leads.csv` (or the Google Sheet) by job URL, so you can schedule it as a daily/weekly cron job without creating duplicate leads.
 
 ## A note on scraping etiquette
 
