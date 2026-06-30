@@ -1,4 +1,4 @@
-# B2B Job-Signal Lead Scraper
+# B2B Job Signal Lead Scraper
 
 A Python scraper that finds B2B sales/GTM leads by monitoring job postings. The idea: when a company is hiring for revenue, sales, marketing, or ops leadership roles, that's a strong buying signal for B2B tools and services targeting those functions.
 
