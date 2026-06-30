@@ -2,11 +2,11 @@
 
 A Python scraper that finds B2B sales/GTM leads by monitoring job postings. The idea: when a company is hiring for revenue, sales, marketing, or ops leadership roles, that's a strong buying signal for B2B tools and services targeting those functions.
 
-Pulls job listings across the US and UK, enriches them with company name, salary, location, and job description, deduplicates, and writes everything to a CSV, with optional auto-sync to Google Sheets.
+Pulls job listings across the US and UK, enriches them with company name, salary, location, and job description, deduplicates, and writes everything to a CSV with optional auto-sync to Google Sheets.
 
 ## What it does
 
-- Searches **40+ target job titles** (VP Sales, Head of Growth, RevOps, CRO, Founder, GTM Engineer, HubSpot Admin, etc.), fully configurable
+- Searches **40+ target job titles** (VP Sales, Head of Growth, RevOps, CRO, Founder, GTM Engineer, HubSpot Admin, etc.) fully configurable
 - Pulls from **Adzuna** (aggregates Indeed, LinkedIn, Glassdoor, and direct company postings) and **LinkedIn Jobs** directly
 - Optional **Reed.co.uk** integration for deeper UK coverage
 - Deduplicates leads across runs (safe to re-run daily/weekly as a cron job)
@@ -27,7 +27,7 @@ pip install -r requirements.txt
 
 ### 2. Get a free Adzuna API key
 
-Sign up at [developer.adzuna.com](https://developer.adzuna.com/) — instant, no credit card, 1,000 free calls/day. You'll get an `app_id` and `app_key`.
+Sign up at [developer.adzuna.com](https://developer.adzuna.com/) : instant, no credit card, 1,000 free calls/day. You'll get an `app_id` and `app_key`.
 
 ### 3. Configure environment variables
 
@@ -42,7 +42,7 @@ ADZUNA_APP_ID=your_app_id
 ADZUNA_APP_KEY=your_app_key
 ```
 
-The script auto-loads `.env` on startup — no extra dependency needed.
+The script auto-loads `.env` on startup, no extra dependency needed.
 
 ### 4. (Optional) Google Sheets auto-push
 
@@ -94,7 +94,7 @@ Everything you'd want to change lives at the top of `scraper.py`:
 | `MAX_PER_QUERY` | Max results per role per source |
 | `REQUEST_DELAY` | Delay range between requests (be polite to the sites you scrape) |
 
-To target a different market or different buyer persona, just edit `TARGET_ROLES` and `ADZUNA_COUNTRIES` — no other code changes needed.
+To target a different market or different buyer persona, just edit `TARGET_ROLES` and `ADZUNA_COUNTRIES` no other code changes needed.
 
 ## Output
 
