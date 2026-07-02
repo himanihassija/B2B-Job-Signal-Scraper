@@ -1,111 +1,54 @@
-# B2B Job Signal Lead Scraper
+<h1 align="center">Hi, I'm Himani Hassija 👋</h1>
+<p align="center">
+  <b>CS + Data Science student building AI agents, RAG pipelines, and automation systems</b><br/>
+  B.Tech CSE @ MDU · B.S. Data Science @ IIT Madras · Delhi, India
+</p>
+<p align="center">
+  <a href="mailto:himanihassija@gmail.com">📧 Email</a> ·
+  <a href="https://www.linkedin.com/in/himani-hassija-116b46324/">💼 LinkedIn</a> ·
+  <a href="https://github.com/himanihassija">🐙 GitHub</a>
+</p>
 
-A Python scraper that finds B2B sales/GTM leads by monitoring job postings. The idea: when a company is hiring for revenue, sales, marketing, or ops leadership roles, that's a strong buying signal for B2B tools and services targeting those functions.
+---
 
-Pulls job listings across the US and UK, enriches them with company name, salary, location, and job description, deduplicates, and writes everything to a CSV with optional auto-sync to Google Sheets.
+## About me
 
-## What it does
+I'm a CS + Data Science dual-degree student passionate about **agentic AI, automation, and systems that think**. I build things that cut months of work into minutes, from multi-agent simulations of 1000 citizens to fully automated B2B outreach pipelines with zero manual work.
 
-- Searches **40+ target job titles** (VP Sales, Head of Growth, RevOps, CRO, Founder, GTM Engineer, HubSpot Admin, etc.) fully configurable
-- Pulls from **Adzuna** (aggregates Indeed, LinkedIn, Glassdoor, and direct company postings) and **LinkedIn Jobs** directly
-- Optional **Reed.co.uk** integration for deeper UK coverage
-- Deduplicates leads across runs (safe to re-run daily/weekly as a cron job)
-- Outputs to CSV with: job title, company, location, job URL, posted date, salary, job type, and a job description snippet
-- Optional one-line push to a Google Sheet, so leads land somewhere your team can immediately work from
+Currently a **GTM Engineering Intern at Growzle**, where I build AI pipelines that autonomously scrape, qualify, and reach out to thousands of leads. Selected for the **GWY 2.0 Fellowship** (1 of 11 from 1,000+ applicants).
 
-## Why job postings as a lead signal
+---
 
-A company hiring a VP of Sales is investing in growth. A company hiring a HubSpot Administrator just adopted (or is scaling) a CRM. A company hiring an SDR Manager is building out a sales team. These are timing signals that traditional firmographic lead lists miss, this scraper turns "who's hiring for X" into a structured, searchable lead feed.
+## Featured projects
 
-## Setup
-
-### 1. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 2. Get a free Adzuna API key
-
-Sign up at [developer.adzuna.com](https://developer.adzuna.com/) : instant, no credit card, 1,000 free calls/day. You'll get an `app_id` and `app_key`.
-
-### 3. Configure environment variables
-
-Copy `.env.example` to `.env` and fill in your values:
-
-```bash
-cp .env.example .env
-```
-
-```
-ADZUNA_APP_ID=your_app_id
-ADZUNA_APP_KEY=your_app_key
-```
-
-The script auto-loads `.env` on startup, no extra dependency needed.
-
-### 4. (Optional) Google Sheets auto-push
-
-If you want leads to land directly in a Google Sheet:
-
-1. Create a project in [Google Cloud Console](https://console.cloud.google.com), enable the **Sheets API** and **Drive API**
-2. Create a **Service Account**, generate a JSON key, save it as `credentials.json` in this folder
-3. Create a Google Sheet, copy its Sheet ID from the URL, and share the sheet with the service account's email (found in `credentials.json` under `client_email`)
-4. Add to `.env`:
-   ```
-   GSHEET_ID=your_sheet_id
-   GOOGLE_CREDENTIALS_PATH=credentials.json
-   ```
-
-If you skip this step, the scraper still works fine — it just writes to CSV and logs a message that Sheets push was skipped.
-
-### 5. (Optional) Reed.co.uk for deeper UK coverage
-
-Free key at [reed.co.uk/developers/jobseeker](https://www.reed.co.uk/developers/jobseeker). Add `REED_API_KEY=your_key` to `.env`.
-
-## Usage
-
-```bash
-# Quick test — 3 roles, Adzuna only, fast validation
-python scraper.py --test
-
-# Full run — all 40+ roles, all sources, writes to leads.csv
-python scraper.py
-
-# Push an existing leads.csv to Google Sheets without re-scraping
-python scraper.py --sheets-only
-
-# Run a single source for debugging
-python scraper.py --source adzuna
-python scraper.py --source linkedin
-python scraper.py --source reed
-```
-
-## Configuration
-
-Everything you'd want to change lives at the top of `scraper.py`:
-
-| Variable | What it controls |
+| Project | What it does |
 |---|---|
-| `TARGET_ROLES` | The 40+ job titles searched (fully editable list) |
-| `PRIORITY_ROLES` | Subset used for the slower LinkedIn HTML scraper |
-| `ADZUNA_COUNTRIES` | Country codes to search (`us`, `gb`, `au`, `ca`, `de`, `fr`, `in`, etc — [full list](https://developer.adzuna.com/docs)) |
-| `LOCATIONS_US_UK` | Locations used for LinkedIn search |
-| `MAX_PER_QUERY` | Max results per role per source |
-| `REQUEST_DELAY` | Delay range between requests (be polite to the sites you scrape) |
+| [🏙️ Delhi's Digital Twin](https://github.com/himanihassija/delhi-digital-twin) | Multi-agent AI simulating 1000 citizen agents across 8 archetypes to model transport policy impact in <60s. |
+| [🔍 Advanced RAG Pipeline](https://github.com/himanihassija/advanced-rag-bigquery-hyde-stepback) | RAG pipeline with HyDE & Step-Back prompting, BigQuery Vector Search, and Gemini on Vertex AI. |
+| [🤖 Gemini Browser Agent](https://github.com/himanihassija/gemini-browser-ai-agent) | Autonomous browser agent powered by Gemini that navigates and reasons over live web content. |
+| [📚 AI Course Generation System](https://github.com/himanihassija) | Multi-agent system (research → evaluation → content agents) that autonomously generates structured courses on any topic. |
+| [📡 B2B Job Signal Scraper](https://github.com/himanihassija/B2B-Job-Signal-Scraper) | Scrapes 40+ job titles across LinkedIn, Adzuna & Reed to turn hiring signals into ready-to-work B2B sales leads, with dedup and optional Google Sheets sync. |
 
-To target a different market or different buyer persona, just edit `TARGET_ROLES` and `ADZUNA_COUNTRIES` no other code changes needed.
+---
 
-## Output
+## Tech stack
 
-CSV columns: `job_title, company, company_domain, location, job_url, posted_date, salary, job_type, description, source_portal, scraped_at`
+**Languages:** Python · C · C++ · JavaScript · HTML/CSS · SQL
+**AI & Agents:** LangChain · LangGraph · LLMs · RAG Pipelines · Multi-Agent Systems · Prompt Engineering · n8n · Make.com
+**Cloud & Data:** Google Cloud · Vertex AI · BigQuery · FastAPI · Flask · NumPy · Pandas · Tableau
+**Tools:** Apify · Figma · Burp Suite · GitHub · Notion
 
-Re-running the scraper is safe it deduplicates against existing rows in `leads.csv` (or the Google Sheet) by job URL, so you can schedule it as a daily/weekly cron job without creating duplicate leads.
+---
 
-## A note on scraping etiquette
+## Currently
 
-This project includes deliberate request delays and rotating user agents to avoid hammering job sites. LinkedIn's public job search pages are scraped respectfully (no login, no automation of authenticated actions) — please keep it that way if you extend this. Always check a site's terms of service before scraping at scale.
+- 🔧 Interning at **Growzle** building AI-powered GTM automation pipelines
+- 📚 Studying CS @ MDU + Data Science @ IIT Madras (simultaneously)
+- 🌐 **Community Operations Coordinator** @ GDG Cloud New Delhi & GDG New Delhi
+- 🤝 Open source contributor @ Open Source Connect
 
-## License
+---
 
-MIT — use it, fork it, adapt it for your own ICP.
+<p align="center">
+  <i>Always open to collaborating on AI/automation projects or interesting open source work.</i>
+</p>
